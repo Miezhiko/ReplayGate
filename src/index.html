@@ -28,15 +28,12 @@
 
 <script>
   const { ipcRenderer } = require('electron');
-  const { renderjson } = require('renderjson');
   (function () {
     var holder = document.getElementById('drag-file');
     var res = document.getElementById('results');
     ipcRenderer.on('replay-go', (event, arg) => {
       holder.style.display = "none";
-      res.appendChild(
-        renderjson.renderjson( arg )
-      );
+      res.innerHTML = arg;
     });
     holder.ondragover = () => {
       return false;
