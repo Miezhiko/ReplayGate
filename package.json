@@ -10,7 +10,7 @@
       "target": [
         "portable"
       ],
-	  "icon": "replay.ico"
+      "icon": "replay.ico"
     },
     "asar": false,
     "directories": {
@@ -25,7 +25,7 @@
     "package": "npm run compile && electron-builder"
   },
   "dependencies": {
-	"w3gjs": "^2.1.0"
+    "w3gjs": "^2.1.0"
   },
   "devDependencies": {
     "copyfiles": "2.1.1",
