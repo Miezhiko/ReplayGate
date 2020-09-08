@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+  #drag-file {
+    background-color: gray;
+    color: darkgray;
+    text-align: center;
+    width: 100%;
+    height: 500px;
+  }
+</style>
+
+<head>
+  <meta charset="utf-8">
+  <title>Replay Gate</title>
+</head>
+<body style="margin:0;padding:0;-webkit-app-region: drag;">
+  <h1 style="margin:0;padding:0;text-align:center;">
+    Replay Gate
+  </h1>
+  <div id="drag-file">
+    <h2>Drag replay files here</h2>
+  </div>
+  <div id="results">
+  </div>
+</body>
+
+<script>
+  const { ipcRenderer } = require('electron');
+  const { renderjson } = require('renderjson');
+  (function () {
+    var holder = document.getElementById('drag-file');
+    var res = document.getElementById('results');
+    ipcRenderer.on('replay-go', (event, arg) => {
+      holder.style.display = "none";
+      res.appendChild(
+        renderjson.renderjson( arg )
+      );
+    });
+    holder.ondragover = () => {
+      return false;
+    };
+    holder.ondragleave = () => {
+      return false;
+    };
+    holder.ondragend = () => {
+      return false;
+    };
+    holder.ondrop = (e) => {
+      e.preventDefault();
+      for (let f of e.dataTransfer.files) {
+        ipcRenderer.send('replay-go', f.path);
+      }
+      return false;
+    };
+  })();
+</script>
+
+</html>

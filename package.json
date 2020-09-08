@@ -1,0 +1,22 @@
+{
+  "name": "replay-gate",
+  "version": "0.0.1",
+  "description": "Simple replay analyzer",
+  "author": {
+    "name": "Qeenon"
+  },
+  "main": "build/index.js",
+  "scripts": {
+    "compile": "tsc && copyfiles -f src/index.html build",
+    "start": "npm run compile && electron --no-sandbox .",
+    "package": "electron-packager . replay-gate"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "copyfiles": "2.1.1",
+    "electron": "9.1.0",
+    "electron-packager": "^15.1.0",
+    "typescript": "3.5.3",
+    "w3gjs": "2.1.0"
+  }
+}
