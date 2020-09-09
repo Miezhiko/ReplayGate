@@ -20,7 +20,7 @@
   },
   "main": "electron/index.js",
   "scripts": {
-    "compile": "tsc --outDir electron && copyfiles -f src/index.html electron",
+    "compile": "tsc --outDir electron && copyfiles -f src/index.html electron && copyfiles -f deps/chart.min.js electron",
     "start": "npm run compile && electron --no-sandbox .",
     "package": "npm run compile && electron-builder"
   },

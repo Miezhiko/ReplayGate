@@ -22,18 +22,39 @@
   <div id="drag-file">
     <h2>Drag replay files here</h2>
   </div>
+  <canvas id="apmChart"></canvas>
   <div id="results">
   </div>
 </body>
+
+<script src="chart.min.js"></script>
 
 <script>
   const { ipcRenderer } = require('electron');
   (function () {
     var holder = document.getElementById('drag-file');
-    var res = document.getElementById('results');
-    ipcRenderer.on('replay-go', (event, arg) => {
+    var resf = document.getElementById('results');
+    var ctx = document.getElementById('apmChart').getContext('2d');
+    ipcRenderer.on('replay-go', (event, res) => {
       holder.style.display = "none";
-      res.innerHTML = arg;
+
+      resf.innerHTML = JSON.stringify(res.result, null, '  ');
+
+      var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: res.labels,
+          datasets: res.data
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              type: 'linear'
+            }]
+          },
+          responsive: true
+        }
+      });
     });
     holder.ondragover = () => {
       return false;

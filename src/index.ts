@@ -3,6 +3,27 @@ import * as path from 'path';
 
 import rep from 'w3gjs';
 import { units, heroes } from "./mappings"
+import { ParserOutput } from 'w3gjs/dist/types/parsers/ReplayParser';
+
+interface Dataset {
+  yAxisID: string;
+  fill: boolean;
+  label: string;
+  data: number[];
+  backgroundColor: string;
+  borderColor: string;
+}
+
+interface ReplayResult {
+  result: ParserOutput;
+  data: Dataset[];
+  labels: string[];
+}
+
+function random_rgba() {
+  var o = Math.round, r = Math.random, s = 255;
+  return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(1) + ')';
+}
 
 ipcMain.on('replay-go', (event, replay) => {
   const highlevel_parser = new rep();
@@ -12,6 +33,8 @@ ipcMain.on('replay-go', (event, replay) => {
   highlevel_parser
     .parse(replay)
     .then((result) => {
+      var apm_graph: Dataset[] = [];
+      var labels: string[] = [];
       for (let playa of result.players) {
         var new_dict: { [id: string] : number; } = {};
         for (let key in playa.units.summary) {
@@ -24,10 +47,23 @@ ipcMain.on('replay-go', (event, replay) => {
           let new_id = heroes[hero.id];
           hero.id = new_id;
         }
+        let color = random_rgba();
+        apm_graph.push(
+          { yAxisID: "apm"
+          , fill: false
+          , label: playa.name
+          , data: playa.actions.timed
+          , backgroundColor: color
+          , borderColor: color }
+        );
       }
-      //event.reply('replay-go', result);
-      let strx = JSON.stringify(result, null, '  ');
-      event.reply('replay-go', strx);
+      if (apm_graph.length > 0) {
+        for (let i = 0; i < apm_graph[0].data.length; i++) {
+          labels.push(i.toString());
+        }
+      }
+      let res = { result: result, data: apm_graph, labels: labels };
+      event.reply('replay-go', res);
     })
     .catch(console.error);
 });
