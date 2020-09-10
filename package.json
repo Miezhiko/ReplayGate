@@ -20,11 +20,13 @@
   },
   "main": "electron/index.js",
   "scripts": {
-    "compile": "tsc --outDir electron && copyfiles -f src/index.html electron && copyfiles -f deps/chart.min.js electron",
+    "compile": "tsc --outDir electron && copyfiles -f src/index.html electron",
     "start": "npm run compile && electron --no-sandbox .",
     "package": "npm run compile && electron-builder"
   },
   "dependencies": {
+    "moment": "2.27.0",
+    "chart.js": "^3.0.0-beta",
     "w3gjs": "^2.1.0"
   },
   "devDependencies": {

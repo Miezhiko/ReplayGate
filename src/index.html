@@ -27,11 +27,10 @@
   </div>
 </body>
 
-<script src="chart.min.js"></script>
-
 <script>
   const { ipcRenderer } = require('electron');
   (function () {
+    var Chart = require('chart.js');
     var holder = document.getElementById('drag-file');
     var resf = document.getElementById('results');
     var ctx = document.getElementById('apmChart').getContext('2d');
