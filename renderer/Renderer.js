@@ -17,7 +17,8 @@ exports.Renderer = class Renderer {
     }
     this.settings = {
       dataStorageFolder: storage.getDefaultDataPath(),
-      exampleText: "Username."
+      replaysStorageFolder: "C:\\Users\\",
+      userName: "Sirius"
     }
     this.loadComponents(components)
     Observe.property(this.status, "activeComponentName", (params) => {
@@ -36,11 +37,13 @@ exports.Renderer = class Renderer {
       }
       localStorage.setItem("activeComponentName", this.status.activeComponentName)
     })
+    /* This we can use after fix js loading for page =_=
     if(localStorage.getItem("activeComponentName")) {
       this.status.activeComponentName = localStorage.getItem("activeComponentName")
     } else {
-      this.status.activeComponentName = "About"
-    }
+      this.status.activeComponentName = "Text"
+    } */
+    this.status.activeComponentName = "Text"
   }
 
   loadComponents(components) {

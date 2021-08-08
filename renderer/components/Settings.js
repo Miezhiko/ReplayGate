@@ -41,8 +41,8 @@ module.exports = class Settings extends (require("../Component")) {
       <input readonly value="${this.renderer.settings.dataStorageFolder}" type="text" class="form-control" id="storageFolder">
       </div>
       <div class="form-group">
-      <label for="exampleText">Text</label>
-      <input type="text" value="${this.renderer.settings.exampleText}" class="form-control" id="exampleText" aria-describedby="exampleText" placeholder="Enter a text">
+      <label for="userName">Username:</label>
+      <input type="text" value="${this.renderer.settings.userName}" class="form-control" id="userName" aria-describedby="username field" placeholder="Enter a text">
       <small class="form-text text-muted">User</small>
       </div>
       <button id="settingsSubmitButton" type="submit" class="btn btn-primary" disabled>Save</button>
@@ -52,7 +52,7 @@ module.exports = class Settings extends (require("../Component")) {
   transferFormData() {
     this.renderer.settings.replaysStorageFolder = document.getElementById("replaysFolder").value
     this.renderer.settings.dataStorageFolder = document.getElementById("storageFolder").value
-    this.renderer.settings.exampleText = document.getElementById("exampleText").value
+    this.renderer.settings.userName = document.getElementById("userName").value
   }
 
   load() {

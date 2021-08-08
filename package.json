@@ -1,9 +1,13 @@
 {
   "name": "replay-gate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple replay analyzer",
+  "repository": {
+    "url": "https://github.com/Miezhiko/ReplayGate"
+  },
+  "license": "GPL-AFFERO-v3",
   "author": {
-    "name": "Qeenon"
+    "name": "Miezhiko"
   },
   "build": {
     "win": {
@@ -28,18 +32,19 @@
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
-    "bootstrap": "^4.5.2",
-    "jquery": "^3.5.1",
-    "moment": "^2.27.0",
-    "chart.js": "^3.0.0-beta",
-    "w3gjs": "^2.1.0",
+    "popper.js": "1.16.1",
+    "bootstrap": "^5.1.0",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "chart.js": "^3.5.0",
+    "w3gjs": "^2.4.2",
     "electron-json-storage": "*",
     "tablesort": "*"
   },
   "devDependencies": {
-    "copyfiles": "2.3.0",
-    "electron": "10.1.1",
-    "electron-builder": "22.8.0",
-    "typescript": "4.0.2"
+    "copyfiles": "2.4.1",
+    "electron": "13.1.8",
+    "electron-builder": "22.11.7",
+    "typescript": "4.3.5"
   }
 }

@@ -57,8 +57,8 @@ ipcMain.on('replay-go', (event, replay) => {
           , borderColor: color }
         );
       }
-      if (apm_graph.length > 0) {
-        for (let i = 0; i < apm_graph[0].data.length; i++) {
+      if (apm_graph.length > 1) {
+        for (let i = 0; i < apm_graph[0].data.length - 1; i++) {
           labels.push(i.toString());
         }
       }
