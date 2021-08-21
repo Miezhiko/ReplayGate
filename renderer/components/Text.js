@@ -1,4 +1,4 @@
-module.exports = class Replays extends (require("../Component")) {
+module.exports = class Text extends (require("../Component")) {
 
   render() {
     return `

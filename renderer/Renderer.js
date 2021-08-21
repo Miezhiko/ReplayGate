@@ -74,6 +74,7 @@ exports.Renderer = class Renderer {
   initFontAwesome() {
     this.fontawesome = require('@fortawesome/fontawesome')
     this.fontawesome.library.add(require('@fortawesome/fontawesome-free-brands/faGithub'))
+    this.fontawesome.library.add(require('@fortawesome/fontawesome-free-solid/faWindowClose'))
     this.fontawesome.library.add(require('@fortawesome/fontawesome-free-solid/faPlus'))
     this.fontawesome.library.add(require('@fortawesome/fontawesome-free-solid/faTrash'))
   }

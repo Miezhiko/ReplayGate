@@ -14,7 +14,10 @@ main { padding-top: 68px; }
   -webkit-app-region: drag;
 }
 
-.nav-item { cursor: pointer; }
+.nav-item {
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+}
 
 .navbar-brand { cursor: default; }
 
@@ -23,13 +26,17 @@ table.crud {
 }
 
 table.crud tr.table-row {
-  cursor: pointer; }
-  table.crud tr.table-row:hover {
-    background-color: #eaeef2; }
+  cursor: pointer;
+}
+
+table.crud tr.table-row:hover {
+  background-color: #eaeef2;
+}
 
 table.crud th[role=columnheader]:not(.no-sort) {
   cursor: pointer;
-  -webkit-user-select: none; }
+  -webkit-user-select: none;
+}
 
 table.crud th[role=columnheader]:not(.no-sort):after {
   content: '';
@@ -39,19 +46,24 @@ table.crud th[role=columnheader]:not(.no-sort):after {
   border-style: solid;
   border-color: #404040 transparent;
   visibility: hidden;
-  opacity: 0; }
+  opacity: 0;
+}
 
 table.crud th[aria-sort=ascending]:not(.no-sort):after {
   border-bottom: none;
-  border-width: 8px 8px 0; }
+  border-width: 8px 8px 0;
+}
 
 table.crud th[aria-sort]:not(.no-sort):after {
   visibility: visible;
-  opacity: 1; }
+  opacity: 1;
+}
 
 table.crud th, table.crud td {
   padding: 2px 10px 2px 10px;
-  border: 1px solid #ccc; }
+  border: 1px solid #ccc;
+}
 
 table.crud td.currency, table.crud td.integer {
-  text-align: right; }
+  text-align: right;
+}

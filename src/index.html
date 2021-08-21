@@ -18,7 +18,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item" data-component="Replay">
           <span class="nav-link">Replays</span>
         </li>
@@ -36,7 +36,13 @@
         <li class="nav-item" data-component="About">
           <span class="nav-link">About</span>
         </li>
+        <li class="nav-item" data-component="Exit">
+          <span id="close-btn" class="nav-link">Exit</span>
+        </li>
       </ul>
+      <span class="navbar-brand" href="#" style="margin-right: 10px;">
+        <i class="fa fa-window-close"></i>
+      </span>
     </div>
   </nav>
   <main class="container-fluid">
@@ -45,6 +51,10 @@
 
 <script>
   window.jQuery = window.$ = require('jquery');
+  const remote = require('electron').remote
+  $('#close-btn').on('click', e => {
+    remote.getCurrentWindow().close()
+  })
 </script>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
